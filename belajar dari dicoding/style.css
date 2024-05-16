@@ -1,0 +1,284 @@
+/* rule akan di terapkan pada sebuah tautan yang belum pernah di kunjungi */
+a:link{
+    color: aquamarine;
+}
+/* di gunakan untuk menunjukan tautan yang sudah di kunjungi */
+a:visited{
+    color: rgb(0, 0, 0);
+}
+/* di gunakan untuk arahan cursor */
+a:hover{
+    color: palevioletred;
+}
+/* menerapakn  warana  pada tautan saat di click */
+a:active{
+color: orange;
+}
+
+
+blockquote::before,
+blockquote::after{
+    content: '"';
+    font-size: 24px;
+    font-style: inherit;
+    font-weight: 800;
+}
+p::first-letter{
+    font-size: 22px;
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+}
+
+/* 
+font-family: menetapkan jenis font yang akan diterapkan pada target.
+font-size: menentukan ukuran pada teks.
+font-weight: menentukan ketebalan pada teks. 
+font-style: menetapkan styling yang diterapkan pada teks.
+font-variant: menentukan teks untuk menggunakan gaya small caps (huruf kapital kecil).
+font: sebagai shorthand dari properti font yang ada.
+*/
+body {
+    font-family: 'Quicksand', sans-serif;
+    color: steelblue;
+  }
+   
+  h2, h3 {
+    color: #00a2c6
+  }
+   
+  footer {
+    padding: 20px;
+    color: white;
+    background-color: #00a2c6;
+  }
+/* Penjelasannya sebagai berikut.
+
+Seluruh nilai font yang bukan merupakan generic font families harus dituliskan secara kapital. Contohnya, “Arial” bukan dituliskan “arial”.
+Gunakan tanda koma (,) untuk memisahkan antara nilai font yang digunakan. 
+Selalu tanda kutip (“) untuk membungkus nilai font yang memiliki spasi pada namanya. Contohnya “Open Sans”.
+Mungkin kita bertanya-tanya mengapa perlu memberikan lebih dari satu nilai pada font-family? Hal tersebut penting karena tidak semua browser mendukung semua jenis font. Jadi, menambahkan lebih dari satu nilai font dapat memberikan alternatif pada browser dalam menampilkan font jika font utama yang diterapkan tidak didukung oleh browser. 
+
+Bagaimana urutan prioritasnya? Dimulai dari jenis font yang pertama dituliskan. Jika font pertama didukung oleh browser, ia akan digunakan. Jika tidak, lantas browser akan memeriksa nilai font yang kedua dan menggunakannya apabila didukung, begitupun selanjutnya.
+
+Hal yang perlu kita perhatikan adalah pastikan untuk menggunakan generic font families pada akhir nilai properti font-family. Nilai ini dipastikan didukung oleh seluruh browser saat ini. Lantas, apa saja nilai dari generic font families ini? Berikut adalah nilai-nilai generic font families yang dapat kita gunakan untuk fallback mechanism.
+
+Serif: jenis font yang memiliki runcing pada garis akhir karakternya. Times New Roman merupakan salah satu jenis serif font.
+Sans-serif: jenis font yang tidak meruncing pada garis akhir karakternya. Contohnya, “Open Sans”, “Fira Sans” dan lainnya.
+Monospace: jenis font yang memiliki nilai lebar tiap karakternya sama. Consolas merupakan salah satu jenisnya.
+Cursive: jenis font yang tampak seperti handwriting atau hasil tulisan tangan.
+Fantasy: jenis font yang merepresentasikan karakteristik yang menyenangkan.
+System-ui: jika menerapkan nilai ini maka font yang diterapkan akan sama seperti font yang digunakan pada sistem operasi kita.
+Math: jenis font yang digunakan untuk penulisan rumus-rumus matematika.
+Emoji: jenis font yang digunakan untuk menampilkan emoji.
+Fangsong: jenis font yang menampilkan gaya penulisan Chinese. */
+@font-face {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.belajar{
+    font-size: 2.5pc;
+}
+.belajar2{
+    font-size: 2.5ex;
+}
+
+.belajar3{
+    font-size: 2.5em;
+}
+
+.belajar4{
+    font-size: 2.5vw;
+}
+
+.belajar5{
+    font-size: 6pt;
+}
+
+.belajar{
+    font-size: 1.5in;
+}
+
+/* Font-weight
+Setelah mengenal font families dan font size, selanjutnya ada juga font-weight yang digunakan untuk mengatur ketebalan dari font yang ditampilkan. Nilai dari properti ini dapat ditentukan dengan menggunakan numeric values (100 sampai 900) atau dengan menggunakan descriptive terms (normal, bold, bolder, dan lighter). */
+.normal {
+    font-weight: normal;
+  }
+  
+  .bold {
+    font-weight: bold;
+  }
+  
+  .bolder {
+    font-weight: bolder;
+  }
+  
+  .lighter {
+    font-weight: lighter;
+  }
+  
+  .fw100 {
+    font-weight: 100;
+  }
+  
+  .fw200 {
+    font-weight: 200;
+  }
+  
+  .fw300 {
+    font-weight: 300;
+  }
+  
+  .fw400 {
+    font-weight: 400;
+  }
+  
+  .fw500 {
+    font-weight: 500;
+  }
+  
+  .fw600 {
+    font-weight: 600;
+  }
+  
+  .fw700 {
+    font-weight: 700;
+  }
+  
+  .fw800 {
+    font-weight: 800;
+  }
+  
+  .fw900 {
+    font-weight: 900;
+  }
+
+  /* 
+  Line Height
+Properti line-height digunakan untuk mengatur jarak minimal dari garis dasar ke garis dasar dalam menampilkannya teks pada halaman. Jika kita terbiasa dengan software dokumen editor seperti Microsoft Word, properti ini mirip dengan fungsi line height.
+
+dos:556bb74aa68fa279a52e7ba078fedf2020230620144505.jpeg
+
+Pada penjelasan di atas disebutkan “minimal” karena jika terdapat sebuah karakter yang tinggi atau besar dalam sebuah baris, tinggi dari baris pun akan menyesuaikan agar jarak tetap mengakomodasinya.
+
+Berikut adalah contoh tiga cara berbeda dalam menerapkan tinggi baris dua kali lebih tinggi dari ukuran font.
+  */
+  
+  .ln2 {
+    line-height: 2;
+  }
+  
+  .ln200 {
+    line-height: 200%;
+  }
+  
+  .ln2em {
+    line-height: 2em;
+  }
+  /* text align */
+  main {
+    width: 80%;
+    margin: 0 auto;
+  
+    border: 1px solid black;
+  }
+  
+  p {
+    border: 1px solid black;
+  }
+  
+  .tl-left {
+    text-align: left;
+  }
+  
+  .tl-right {
+    text-align: right;
+  }
+  
+  .tl-center {
+    text-align: center;
+  }
+  
+  .tl-justify {
+    text-align: justify;
+  }
+  /* text transform */
+  main{
+    font-family: sans-serif;
+  }
+  .transform-none{
+    text-transform: none;
+  }
+  .transform-capitalize{
+    text-transform: capitalize;
+  }
+  .transform-lowercase{
+    text-transform: lowercase;
+  }
+  .transform-uppercase{
+    text-transform: uppercase;
+  }
+  
+  /* spacing */
+ .letter-spacing {
+  letter-spacing: 4px;
+}
+
+.word-spacing {
+  word-spacing: 1.5em;
+}
+
+/* 
+Text Shadow
+Memberikan bayangan pada teks telah menjadi hal yang umum digunakan meskipun tidak memiliki dukungan di semua browser. Pada CSS, kita dapat gunakan properti text-shadow untuk membuat bayangan pada teks (atau biasa disebut drop shadow).
+
+Nilai dari properti ini cukup rumit karena membutuhkan tiga buah nilai dan satu buah nilai warna sehingga membutuhkan empat nilai dalam satu properti untuk menentukan bayangannya.
+
+Nilai pertama: menunjukkan seberapa jauh ke kiri atau kanan (horizontal) bayangan harus ditampakkan.
+Nilai kedua: menunjukkan jarak ke atas atau ke bawah (vertical) bayangan harus ditampakkan. 
+Nilai ketiga (opsional): menentukan tingkat keburaman yang harus diterapkan pada bayangan.
+Nilai keempat: menentukan warna yang digunakan pada bayangan.
+*/
+
+.one{
+    text-shadow: 2px 2px 0px #000000;
+    background-color: #cccccc;
+    color: #666666;
+
+}
+.two{
+    text-shadow: 4px 4px 3px #666666;
+    background-color: #cccccc;
+    color: aliceblue;
+}
+.three{
+    text-shadow: 4px 4px 7px #111111;
+    background-color: #cccccc;
+    color: #ffffff;
+}
+.four{
+    text-shadow: -2px -2px #666666;
+    background-color: #cccccc;
+    color: #bbbbbb;
+}
+/* background color */
+
+main {
+    background-color: rgb(235, 255, 213);
+    padding: 20px 15px;
+  }
+  
+  main > h2 {
+    background-color: #4c5450;
+    padding: 15px;
+    color: white;
+  }
+  
+  main > h3 {
+    background-color: #60d0a8;
+    padding: 15px;
+    color: white;
+  }
+  
+  main > p {
+    background-color: hsl(56, 62%, 85%);
+    padding: 20px;
+  }
