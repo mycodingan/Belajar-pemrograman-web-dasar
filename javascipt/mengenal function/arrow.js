@@ -16,3 +16,6 @@ sayJojo("jsohua wahyu");
 
 const sayDada = () => console.log("selamat pagi semuanya !");
 sayDada();
+
+const multiply = (a,b) => a* b ;
+console.log(multiply(3,4))
