@@ -1,0 +1,158 @@
+<!-- construktor -->
+Kode ini mendefinisikan sebuah konstruktor `Car` dan menetapkan beberapa metode pada prototipenya. Berikut adalah penjelasan rinci tentang kode ini:
+
+### Definisi Konstruktor
+
+```javascript
+function Car(brand, color, maxSpeed, chassisNumber) {
+    this.brand = brand;
+    this.color = color;
+    this.maxSpeed = maxSpeed;
+    this.chassisNumber = chassisNumber;
+}
+```
+- `Car` adalah fungsi konstruktor yang digunakan untuk membuat objek baru dengan properti `brand`, `color`, `maxSpeed`, dan `chassisNumber`.
+- `this` mengacu pada objek baru yang sedang dibuat.
+
+### Menetapkan Metode pada Prototipe `Car`
+
+```javascript
+Car.prototype.drive = function() {
+    console.log(`${this.brand} ${this.color} is driving`);
+}
+
+Car.prototype.reverse = function() {
+    console.log(`${this.brand} ${this.color} is reversing`);
+}
+
+Car.prototype.turn = function() {
+    console.log(`${this.brand} ${this.color} is turning`);
+}
+```
+- `Car.prototype.drive`, `Car.prototype.reverse`, dan `Car.prototype.turn` adalah metode yang ditambahkan ke prototipe `Car`. 
+- Ini berarti semua instance dari `Car` akan mewarisi metode-metode ini.
+- Setiap metode menggunakan `this` untuk mengakses properti dari objek yang memanggil metode tersebut (`brand` dan `color`), lalu mencetak pesan yang sesuai.
+
+### Membuat Instance dari Objek `Car`
+
+```javascript
+const myCar = new Car('Toyota', 'Red', 200, 'ABC123');
+```
+- `myCar` adalah instance baru dari `Car`, dengan `brand` 'Toyota', `color` 'Red', `maxSpeed` 200, dan `chassisNumber` 'ABC123'.
+
+### Memanggil Metode pada Instance
+
+```javascript
+myCar.drive();
+myCar.reverse();
+myCar.turn();
+```
+- Metode `drive`, `reverse`, dan `turn` dipanggil pada instance `myCar`. 
+- Karena `myCar` mewarisi metode-metode ini dari prototipe `Car`, panggilan ini menghasilkan output:
+  ```
+  Toyota Red is driving
+  Toyota Red is reversing
+  Toyota Red is turning
+  ```
+
+### Menampilkan Instance ke Konsol
+
+```javascript
+console.log(myCar);
+```
+- Ini akan menampilkan seluruh objek `myCar` di konsol, menunjukkan semua properti yang telah diinisialisasi:
+  ```javascript
+  Car { brand: 'Toyota', color: 'Red', maxSpeed: 200, chassisNumber: 'ABC123' }
+  ```
+
+### Ringkasan
+- **Konstruktor `Car`** digunakan untuk membuat objek mobil baru dengan properti tertentu.
+- **Metode pada prototipe** memungkinkan semua instance `Car` untuk berbagi fungsi yang sama tanpa mendefinisikannya ulang untuk setiap objek.
+- **Instance `myCar`** dibuat dan metode-metodenya dipanggil, menunjukkan penggunaan pewarisan prototipe dalam JavaScript. 
+
+Dengan menggunakan pendekatan ini, kita dapat menciptakan objek yang terstruktur dengan baik dan memanfaatkan pewarisan prototipe untuk menghemat memori dan menghindari pengulangan kode.
+
+
+
+
+
+
+
+
+
+
+<!-- OOP -->
+
+Dalam pemrograman berorientasi objek (OOP), pewarisan (inheritance) adalah konsep di mana sebuah kelas dapat mewarisi properti dan metode dari kelas lain. Ini memungkinkan kita untuk membuat hierarki kelas yang terstruktur dan menghindari pengulangan kode. Mari kita jelaskan kode di atas dalam konteks pewarisan OOP.
+
+### Penjelasan Kode
+
+1. **Definisi Kelas Induk (Parent Class)**:
+    ```javascript
+    function MailService(sender) {
+        this.sender = sender;
+    }
+   
+    MailService.prototype.sendMessage = function (message, receiver) {
+        console.log(`${this.sender} sent ${message} to ${receiver}`);
+    }
+    ```
+    `MailService` adalah kelas induk yang memiliki constructor untuk menginisialisasi properti `sender`. Kelas ini juga memiliki metode `sendMessage` yang digunakan untuk mengirim pesan.
+
+2. **Kelas Anak (Child Class) WhatsAppService**:
+    ```javascript
+    function WhatsAppService(sender) {
+        MailService.call(this, sender);
+    }
+   
+    WhatsAppService.prototype = Object.create(MailService.prototype);
+    WhatsAppService.prototype.constructor = WhatsAppService;
+   
+    WhatsAppService.prototype.sendBroadcastMessage = function (message, receivers) {
+        for (const receiver of receivers) {
+            this.sendMessage(message, receiver);
+        }
+    }
+    ```
+    - `WhatsAppService` adalah kelas anak yang mewarisi dari `MailService`. Pada constructor-nya, `MailService.call(this, sender)` digunakan untuk memanggil constructor kelas induk (`MailService`) dan menginisialisasi properti `sender`.
+    - `WhatsAppService.prototype = Object.create(MailService.prototype);` menetapkan prototipe `WhatsAppService` ke sebuah objek yang diciptakan dari `MailService.prototype`, sehingga `WhatsAppService` mewarisi semua metode dari `MailService`.
+    - `WhatsAppService.prototype.constructor = WhatsAppService;` memastikan konstruktor `WhatsAppService` tetap terhubung dengan benar.
+    - `sendBroadcastMessage` adalah metode baru yang spesifik untuk `WhatsAppService`.
+
+3. **Kelas Anak (Child Class) EmailService**:
+    ```javascript
+    function EmailService(sender) {
+        MailService.call(this, sender);
+    }
+   
+    EmailService.prototype = Object.create(MailService.prototype);
+    EmailService.prototype.constructor = EmailService;
+   
+    EmailService.prototype.sendDelayedMessage = function (message, receiver, delay) {
+        setTimeout(() => {
+            this.sendMessage(message, receiver);
+        }, delay);
+    }
+    ```
+    - `EmailService` juga mewarisi dari `MailService` dengan cara yang sama seperti `WhatsAppService`.
+    - `sendDelayedMessage` adalah metode baru yang spesifik untuk `EmailService`, yang mengirim pesan dengan penundaan menggunakan `setTimeout`.
+
+### Penggunaan Kelas
+```javascript
+const whatsapp = new WhatsAppService('+6281234567890');
+const email = new EmailService('dimas@dicoding.com');
+whatsapp.sendMessage('Hello', '+6289876543210');
+whatsapp.sendBroadcastMessage('Hello', ['+6289876543210', '+6282234567890']);
+email.sendMessage('Hello', 'john@doe.com');
+email.sendDelayedMessage('Hello', 'john@doe.com', 3000);
+```
+- `whatsapp` adalah instance dari `WhatsAppService`. Ia dapat menggunakan metode `sendMessage` dari `MailService` dan `sendBroadcastMessage` dari `WhatsAppService`.
+- `email` adalah instance dari `EmailService`. Ia dapat menggunakan metode `sendMessage` dari `MailService` dan `sendDelayedMessage` dari `EmailService`.
+
+### Ringkasan
+- **Pewarisan** memungkinkan kelas anak untuk mewarisi properti dan metode dari kelas induk.
+- **`Object.create`** digunakan untuk mengatur prototype chain agar kelas anak mewarisi metode dari kelas induk.
+- **`call` method** digunakan dalam constructor kelas anak untuk memanggil constructor kelas induk.
+- Metode khusus dapat ditambahkan ke kelas anak tanpa mempengaruhi kelas induk atau kelas anak lainnya. 
+
+Dengan demikian, kode ini menunjukkan bagaimana kita dapat menggunakan pewarisan dalam OOP untuk menciptakan struktur kelas yang bersih dan modular.
