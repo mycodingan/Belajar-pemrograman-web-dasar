@@ -18,6 +18,7 @@
 
 class Car {
     constructor(brand, color, maxSpeed) {
+        //this untuk menunjukan propertis yang di tuju
         this.brand = brand;
         this.color = color;
         this.maxSpeed = maxSpeed;
@@ -25,6 +26,7 @@ class Car {
     }
 }
 
+// untuk code di bawah ini  sebagai metodh
 const car = new Car('BMW', 'red', 200);
 car.chassisNumber = 'BMW-1';
 
